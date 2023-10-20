@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const [starWarsData, setStarWaData] = React.useState({})
+  const [starWarsData, setStarWarsData] = React.useState({})
   //GETTING DATA FROM AN API
 // 1. GET the data (fetch)
     // 2. Save the data to state
@@ -15,16 +15,35 @@ function App() {
 
     // fetching data from starwars api 
 
-    fetch("https://swapi.dev/api/people/1")
+    //fetch("https://swapi.dev/api/people/1")
     // .then resolves a promise, recives a response and res aka response . json turn it into js data we can use for the page 
-    .then(res => res.json())
+    // .then(res => res.json())
     // below takes the data and tells it what to do, below consoel logs it 
     // .then(data => console.log(data))
 
 
     // now we take the data and actually add it to the page 
     
-    .then(data => setStarWaData (data))
+    //.then(data => setStarWaData (data))
+
+
+    // below we are using the the use effect to help us deaal wiht the re rendering of the above api data 
+
+
+    // this is the required first parameter, there is na optional second parameter 
+    // the required paraameter belwo is a call back function 
+
+
+    React.useEffect(function(){
+      // inside of here we will insert the sdie effect code , in this example, its the above api fetch request that was re rendering 
+
+      // anything put insid eof here is guaranteed to only run after below data is rendered to the DOM
+      fetch("https://swapi.dev/api/people/1")
+      .then(res => res.json())
+      .then(data => setStarWarsData(data))
+
+      //?? still re-rendrign at this point, we have to add the second parameter to get it to listen to what we waant it to do 
+    })
   return (
       <div>
           <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
