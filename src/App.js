@@ -7,7 +7,7 @@ function App() {
     
 React.useEffect(() =>{
 
-  // console.log("effect function ran")
+  //'/// console.log("effect function ran")
     //GETTING DATA FROM AN API
   // 1. GET the data (fetch)
   // 2. Save the data to state
