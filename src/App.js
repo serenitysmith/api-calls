@@ -91,6 +91,23 @@ React.useEffect(() =>{
      */
 
 fetch("https://swapi.dev/api/people/" + count)
+
+
+
+
+// The .then(res => res.json()) is a part of a Promise chain in JavaScript, specifically used with the fetch API for making HTTP requests. Here's what it means step by step:
+
+// fetch returns a Promise: When you make an HTTP request using fetch, it returns a Promise that resolves to the response to that request.
+
+// .then(): This is a method that you can chain onto the Promise returned by fetch. It's used for handling the response when the Promise is resolved.
+
+// res => res.json(): This is an arrow function that's used as a callback for the .then() method. It takes the response object (res) as an argument and calls the .json() method on it.
+
+// res: The response object represents the response from the HTTP request, which includes the response headers and body.
+
+// res.json(): The .json() method is used to parse the response body as JSON. It reads the response body stream and returns a Promise that resolves to the JavaScript object parsed from the JSON data.
+
+// So, .then(res => res.json()) is saying that when the Promise returned by fetch is resolved, it should take the response (res) and parse it as JSON. This is commonly used when you expect the response from the server to be in JSON format, and you want to work with the data as a JavaScript object.
             .then(res => res.json())
 
             // changed below console log statement to setstars wars data to pin it to the DOm 
@@ -123,10 +140,17 @@ console.log("effect ran")
   
   return (
     <div>
+
+
+{/* The <pre> element is not an abbreviation for "pre." It's an HTML element, specifically the "preformatted text" element. The <pre> element is used to display text in a fixed-width (monospace) font, and it preserves both spaces and line breaks. It's often used for displaying code snippets, preformatted text, or any text where whitespace and formatting are significant.
+
+The JSON.stringify() function is used to convert a JavaScript object (in this case, starWarsData) into a JSON-formatted string. The second argument (null) and the third argument (2) are optional and used for formatting the JSON string. The 2 indicates that you want to use 2 spaces for indentation in the JSON string, making it more human-readable.
+
+So, in your code, the starWarsData is being stringified to JSON, and the result is placed within a <pre> element, ensuring that the formatting and whitespace are preserved when it's displayed on a web page. */}
       <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
       <h2>The count is {count}</h2>
 
-      {/* single add button and somehtign that displays the current count, did this so we had a way to trigger re renders and stae changes on our app  */}
+      {/* single add button and something that displays the current count, did this so we had a way to trigger re renders and state changes on our app  */}
             <button onClick={() => setCount(prevCount => prevCount + 1)}>Get Next Character </button>
     </div>
   );
